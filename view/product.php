@@ -69,7 +69,7 @@ if(@$_GET['act'] == ''){
                             <tr>
                                 <td><?php echo $no++; ?></td>
                                 <td><?php echo $data->nm_brg; ?></td>
-                                <td><?php echo $data->merk; ?></td>
+                                <td><?php echo $data->merk . " - " . $data->type; ?></td>
                                 <td><?php echo $data->harga; ?></td>
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" id="edit_pdc" data-toggle="modal" data-target="#editProduct" data-kd="<?php echo $data->kd_brg; ?>" data-nama="<?php echo $data->nm_brg; ?>" data-merk="<?php echo $data->merk; ?>" data-type="<?php echo $data->type; ?>" data-harga="<?php echo $data->harga; ?>" data-stok="<?php echo $data->stok; ?>">

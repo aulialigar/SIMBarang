@@ -40,8 +40,8 @@ $tsc = new Transaction($connection);
                                 <tr>
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data->tgl_beli; ?></td>
-                                    <td><?php echo $data->nm_pembeli; ?></td>
-                                    <td><?php echo $data->nm_brg; ?></td>
+                                    <td><?php echo $data->nm_pembeli . " - " . $data->kota; ?></td>
+                                    <td><?php echo $data->nm_brg . " - " . $data->merk . "(" . $data->type . ")"; ?></td>
                                     <td><?php echo $data->harga; ?></td>
                                 </tr>
                                 <?php
