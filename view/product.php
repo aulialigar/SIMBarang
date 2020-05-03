@@ -1,7 +1,8 @@
 <?php
 include "model/m_product.php";
-
 $pdc = new Product($connection);
+
+if(@$_GET['act'] == ''){
 ?>
 <!-- MAIN CONTENT-->
 <div class="main-content">
@@ -73,9 +74,10 @@ $pdc = new Product($connection);
                                 <td>
                                     <button type="button" class="btn btn-primary btn-sm" id="edit_pdc" data-toggle="modal" data-target="#editProduct" data-kd="<?php echo $data->kd_brg; ?>" data-nama="<?php echo $data->nm_brg; ?>" data-merk="<?php echo $data->merk; ?>" data-type="<?php echo $data->type; ?>" data-harga="<?php echo $data->harga; ?>" data-stok="<?php echo $data->stok; ?>">
                                         <i class="fa fa-edit"></i>&nbsp; Edit</button>
-                                    <button type="button" class="btn btn-danger btn-sm">
+                                        <a href="?page=product&act=del&id=<?php echo $data->kd_brg; ?>">
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Yakin akan menghapus data ini?')">
                                         <i class="fa fa-trash"></i>&nbsp; Hapus</button>
-                                    </button>
+                                        </a>
                                 </td>
                             </tr>
                         <?php
@@ -228,7 +230,7 @@ $pdc = new Product($connection);
                         });
                     }));
                 })
-                
+
             </script>
             
             <!-- /.modal-content -->
@@ -237,3 +239,9 @@ $pdc = new Product($connection);
     </div>
     <!-- END DATA TABLE-->
 </div>
+<?php
+} else if (@$_GET['act'] == 'del'){
+    $pdc->hapus($_GET['id']);
+    header("location: ?page=product");
+}
+?>

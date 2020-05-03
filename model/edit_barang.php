@@ -1,5 +1,4 @@
 <?php
-ob_start();
 require_once('../config/config.php');
 require_once('../model/database.php');
 include "../model/m_product.php";
@@ -14,6 +13,5 @@ $harga = $connection->conn->real_escape_string($_POST['harga']);
 $stok = $connection->conn->real_escape_string($_POST['stok']);
 
 $pdc->edit("UPDATE barang SET nm_brg = '$nm_brg', merk = '$merk', type = '$type', harga = '$harga', stok = '$stok' WHERE kd_brg = '$kd_brg'");
-header("location: ?page=product");
-echo "<script>alert('Berhasil !')</script>";
+echo "<script>window.location='?page=product';</script>";
 ?>
