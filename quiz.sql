@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 02:52 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.31
+-- Generation Time: May 06, 2020 at 05:20 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,10 +41,30 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`kd_brg`, `nm_brg`, `merk`, `type`, `harga`, `stok`) VALUES
-(1, 'coklat', 'coki-coki', 'makanan', '1000', '100'),
+(1, 'chocolate', 'coki-coki', 'makanan', '1000', '100'),
 (2, 'tepung', 'segitiga biru', 'sembako', '10000', '25'),
-(3, 'hp', 'xiomi', 'note7', '2000000', '40'),
-(4, 'es', 'walls', 'cone', '2000', '40');
+(3, 'gawai', 'xiomi', 'note7', '2000000', '40'),
+(5, 'sepeda', 'polygon', 'r', '2000000', '4'),
+(6, 'laptop', 'asus', 'rog', '17000000', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `username`, `password`) VALUES
+(4, 'mega', 'mega123');
 
 -- --------------------------------------------------------
 
@@ -67,7 +86,9 @@ CREATE TABLE `pembeli` (
 
 INSERT INTO `pembeli` (`kd_pembeli`, `nm_pembeli`, `jk`, `alamat`, `kota`) VALUES
 (1, 'bambang', 'l', 'jl jl', 'sby'),
-(2, 'dia', 'p', 'jl raya', 'mlg');
+(2, 'dia', 'p', 'jl raya', 'mlg'),
+(3, 'jono', 'L', 'asd', 'as'),
+(4, 'mega', 'P', 'jl. tlogo kautsar', 'bima');
 
 -- --------------------------------------------------------
 
@@ -88,7 +109,12 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`kd_trx`, `kd_brg`, `kd_pembeli`, `tgl_beli`) VALUES
 (1, 1, 1, '2020-04-01 00:00:00'),
-(2, 2, 2, '2020-04-22 00:00:00');
+(2, 2, 2, '2020-04-22 00:00:00'),
+(3, 3, 2, '0000-00-00 00:00:00'),
+(4, 5, 3, '0000-00-00 00:00:00'),
+(5, 3, 2, '2020-05-09 21:01:09'),
+(6, 5, 3, '2020-05-21 21:01:09'),
+(7, 1, 2, '2020-05-01 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -99,6 +125,12 @@ INSERT INTO `transaksi` (`kd_trx`, `kd_brg`, `kd_pembeli`, `tgl_beli`) VALUES
 --
 ALTER TABLE `barang`
   ADD PRIMARY KEY (`kd_brg`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pembeli`
@@ -122,19 +154,25 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `kd_brg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kd_brg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pembeli`
 --
 ALTER TABLE `pembeli`
-  MODIFY `kd_pembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_pembeli` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `kd_trx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kd_trx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

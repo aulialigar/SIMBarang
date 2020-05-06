@@ -39,5 +39,12 @@ class Product {
         $db = $this->mysqli->conn;
         $db->close();
     }
+
+    function cari($keyword)
+    {
+        $db = $this->mysqli->conn;
+        $db->query("SELECT * FROM barang WHERE nm_brg LIKE '%$keyword%'") or die ($db->error);
+        return $db;
+    }
 }
 ?>
